@@ -28,7 +28,7 @@ const getQuestionsElement = () => {
 };
 
 const changeElementOpacity = (elem: HTMLElement) => {
-  elem.style.opacity = "20%";
+  elem.style.opacity = "100%";
 };
 
 const highlightAnswers = (question: QuizQuestion) => {
@@ -42,15 +42,15 @@ const highlightAnswers = (question: QuizQuestion) => {
     return;
   }
 
-  // arr.filter((e) => {
-  //   if (Array.isArray(question.structure.answer) && question.structure.answer.length > 0) {
-  //     return !(question.structure.answer.some((ansID) => e.__vue__.optionData.actualIndex === ansID));
-  //   } else if(typeof question.structure.answer == "number") {
-  //     return e.__vue__.optionData.actualIndex !== question.structure.answer
-  //   } else {
-  //     console.error("Fail detecting type of question: ", question);
-  //   }
-  // }).forEach(changeElementOpacity);
+  arr.filter((e) => {
+    if (Array.isArray(question.structure.answer) && question.structure.answer.length > 0) {
+      return !(question.structure.answer.some((ansID) => e.__vue__.optionData.actualIndex === ansID));
+    } else if(typeof question.structure.answer == "number") {
+      return e.__vue__.optionData.actualIndex !== question.structure.answer
+    } else {
+      console.error("Fail detecting type of question: ", question);
+    }
+  }).forEach(changeElementOpacity);
 }
 
 const getQuestionInfo = (): {
